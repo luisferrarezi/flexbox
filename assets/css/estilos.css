@@ -9,6 +9,13 @@ body{
   color: #FFFFFF;
 }
 
+@media screen and (min-width: 1440px) {
+  body{
+    display: grid;
+    grid-template-columns: auto 1fr;
+  }
+}
+
 .cabecalho{
   display: flex;
   justify-content: space-between;
@@ -30,6 +37,59 @@ body{
 
 .cabecalho_logo{
   width: 40px;
+}
+
+.cabecalho_perfil{
+  display: none;
+}
+
+@media screen and (min-width: 1440px) {
+  .cabecalho{
+    background-color: #1D232A;
+    display: grid;
+    column-gap: 32px;
+    grid-template-columns: 1fr auto;
+    padding: 16px 60px;
+    height: 80px;
+    box-sizing: border-box;
+    grid-column: 2;
+  }
+
+  .cabecalho_menu{
+    display: none;
+  }
+
+  .cabecalho_logo{
+    display: none;
+  }
+
+  .cabecalho_perfil{
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    column-gap: 8px;
+    align-items: center;
+    justify-self: flex-end;
+    color: #95999C;
+    padding: 8px 32px;
+    border-right: 1px solid #95999C;
+  }
+
+  .cabecalho_perfil::before{
+    content: "";
+    display: block;
+    height: 32px;
+    width: 32px;
+    background-image: url(../img/profile_1.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  .cabecalho_perfil::after{
+    content: "\e90d";
+    color: #FFFFFF;
+    font-size: 1.5rem;
+  }
 }
 
 .menu_lateral{
@@ -100,13 +160,47 @@ body{
   content: "\e90a";  
 }
 
+@media screen and (min-width: 1440px) {
+  .menu_lateral{
+    position: static;
+    width: 200px;
+    grid-column: 1;
+    grid-row: 1 / span 2;    
+  }
+}
+
 .principal{
   padding: 24px 16px;
+  display: grid;
+  gap: 16px;
 }
 
 .titulo_pagina{
   font-size: 1.5rem;
   font-weight: 700;
+}
+
+.titulo_secao{
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+@media screen and (min-width: 1440px) {
+  .principal{
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    grid-template-areas: 
+      "titulo_pagina titulo_pagina titulo_pagina"
+      "destaque_video destaque_video video_recentes"
+    ;
+    column-gap: 32px;
+    padding: 16px 60px;
+    grid-column: 2;
+  }
+
+  .titulo_secao{
+    grid-column: span 4;
+  }
 }
 
 .cartao{
@@ -116,10 +210,19 @@ body{
   background-color: #2C343A;
 }
 
+.cartao_imagem_desktop{
+  display: none;
+}
+
+.cartao__destaque{
+  margin-bottom: 16px;
+}
+
 .cartao_conteudo{
   padding: 16px;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: auto 1fr;
+  gap: 8px;
 }
 
 .cartao_destaque{
@@ -163,6 +266,7 @@ body{
   height: 40px;
   border-radius: 10px;
   font-size: 0.9rem;
+  justify-self: flex-end;
 }
 
 .cartao_botao_play::before{
@@ -177,4 +281,112 @@ body{
 
 .cartao_botao_destaque::before{
   margin-right: 8px;
+}
+
+.cartao_recentes{
+  display: none;
+}
+
+@media screen and (min-width: 1440px) {
+  .cartao__destaque{
+    margin-bottom: 0;
+  }
+
+  .cartao_imagem_desktop{
+    display: block;
+  }
+
+  .cartao_imagem_mobile{
+    display: none;
+  }
+
+  .cartao_botao_destaque{
+    grid-column: auto;
+    padding: 16px 8px;
+  }
+
+  .cartao_recentes{
+    display: grid;
+    grid-template-columns: auto auto;
+    align-items: center;
+    row-gap: 24px;
+    width: 256px;    
+    padding: 16px;
+    box-sizing: border-box;
+    align-self: flex-start;
+  }
+
+  .cartao_recentes .cartao_titulo{
+    grid-column: auto;
+  }
+
+  .cartao_link{
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #0480DC;
+    justify-self: flex-end;
+  }
+
+  .cartao_lista{
+    display: grid;
+    row-gap: 16px;
+    grid-column: span 2;
+  }
+
+  .cartao_item{
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 8px;
+  }
+
+  .cartao_item_thumbnail{
+    width: 32px;
+    grid-row: span 2;
+  }
+
+  .cartao_item_titulo{
+    font-size: 0.9rem;
+    line-height: 1.2rem;
+    font-weight: 700;
+  }
+
+  .cartao_item_perfil{
+    font-size: 0.8rem;
+    color: #95999C;
+  }
+}
+
+.secao{
+  display: grid;
+  gap: 16px;
+}
+
+@media screen and (min-width: 1440px) {
+  .secao{
+    grid-template-columns: repeat(4, 1fr);
+  }
+  
+  .destaque_video{
+    grid-area: destaque_video;
+  }
+
+  .video_recentes{
+    grid-area: video_recentes;
+  }
+
+  .secao_video{
+    grid-area: secao_video;
+  }
+
+  .destaque_produto{
+    grid-area: destaque_produto;
+  }
+
+  .produto_recentes{
+    grid-area: produto_recentes;
+  }
+
+  .secao_produto{
+    grid-area: secao_produto;
+  }
 }
